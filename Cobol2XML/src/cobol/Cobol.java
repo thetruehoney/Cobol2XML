@@ -31,6 +31,7 @@ public class Cobol implements PubliclyCloneable {
 	protected int dayDateWritten = 0;
 	protected String monthDateWritten;
 	protected int yearDateWritten = 0;
+	protected String paragraphName;
 
 	
 	/**
@@ -91,6 +92,14 @@ public class Cobol implements PubliclyCloneable {
 			return false;
 		}
 		
+		if (!ifCobolObjEqual(commentLine, c.commentLine)) {
+			return false;
+		}
+		
+		if (!ifCobolObjEqual(paragraphName, c.paragraphName)) {
+			return false;
+		}
+				
 
 		return true;
 	}
@@ -99,17 +108,6 @@ public class Cobol implements PubliclyCloneable {
 	  public int hashCode() {
 	    return super.hashCode();
 	  }
-
-
-	/**
-	 * Return line of commented text from the COBOL program.
-	 *
-	 * @return line of commented text from the COBOL program
-	 */
-	public String getCommentLine() {
-		return commentLine;
-	}
-	
 
 	/**
 	 * Return the name of this COBOL program.
@@ -167,6 +165,33 @@ public class Cobol implements PubliclyCloneable {
 	}
 	
 	/**
+	 * Return the comment of this COBOL program.
+	 *
+	 * @return the comment of this COBOL program
+	 */
+	public String getCommentLine() {
+		return commentLine;
+	}
+	
+	/**
+	 * Return the paragraph of this COBOL program.
+	 *
+	 * @return the paragraph of this COBOL program
+	 */
+	public String getParagraphName() {
+		return paragraphName;
+	}
+	
+	/**
+	 * Set the paragraph from the COBOL program.
+	 *
+	 * @return the paragraph text from the COBOL program
+	 */
+	public void setParagraphName(String paragraphName) {
+		this.paragraphName = paragraphName;
+	}
+	
+	/**
 	 * Set a line of commented text from the COBOL program.
 	 *
 	 * @return line of commented text from the COBOL program
@@ -174,8 +199,6 @@ public class Cobol implements PubliclyCloneable {
 	public void setCommentLine(String commentLine) {
 		this.commentLine = commentLine;
 	}
-
-
 
 	/**
 	 * Set the name of this cobol file.
@@ -244,6 +267,10 @@ public class Cobol implements PubliclyCloneable {
 		buf.append(divisionName);
 		buf.append(", ");
 		buf.append(sectionName);
+		buf.append(", ");
+		buf.append(commentLine);
+		buf.append(", ");
+		buf.append(paragraphName);
 		
 		return buf.toString();
 	}

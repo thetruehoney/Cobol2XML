@@ -67,8 +67,10 @@ public Alternation(
 	Parser p1, 
 	Parser p2, 
 	Parser p3, 
-	Parser p4) {
-	super(p1, p2, p3, p4);
+	Parser p4,
+	Parser p5,
+	Parser p6) {
+	super(p1, p2, p3, p4, p5, p6);
 }
 /**
  * Accept a "visitor" and a collection of previously visited

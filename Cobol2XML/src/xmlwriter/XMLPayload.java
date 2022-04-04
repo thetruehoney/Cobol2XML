@@ -128,10 +128,27 @@ public class XMLPayload {
 		if(yearDateWritten != 0) {
 			this.addYearDateWrittenElement( yearDateWritten );
 		}
+		
+		// CommentLine
+		String commentLine = c.getCommentLine();
+		if (commentLine != null) {
+			this.addCommentLineElement( commentLine );
+			// Add contents of procedure division
+		} else {
+			// month null
+		}
+		
+		// paragraphName
+		String paragraphName = c.getParagraphName();
+		if (paragraphName != null) {
+			this.addParagraphElement( paragraphName );
+			// Add contents of procedure division
+		} else {
+			// month null
+		}
 
 	}
 	
-
  	void addProgram_IDElement(String stringElement) {
 		//  Program ID element
 		
@@ -151,8 +168,6 @@ public class XMLPayload {
 			rootElement.appendChild(cobolname);
 		}
 	}
- 	
- 	
  	
  	void addSectionElement(String stringElement) {
 		//  Section element
@@ -200,6 +215,17 @@ public class XMLPayload {
 		if(intElement != 0) {
 			Element cobolname = doc.createElement("year-date-written");
 			String s = "" + intElement;
+			cobolname.appendChild(doc.createTextNode(s));
+			rootElement.appendChild(cobolname);
+		}
+	}
+	
+	void addParagraphElement(String stringElement) {
+		//  Paragraph element
+		
+		if(stringElement != null) {
+			Element cobolname = doc.createElement("paragraph");
+			String s = "" + stringElement;
 			cobolname.appendChild(doc.createTextNode(s));
 			rootElement.appendChild(cobolname);
 		}

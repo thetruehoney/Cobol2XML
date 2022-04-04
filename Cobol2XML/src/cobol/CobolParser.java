@@ -55,6 +55,10 @@ public class CobolParser {
 		
 		a.add( DateWritten() );
 		
+		a.add( CommentLine() );
+		
+		a.add( ParagraphName() );
+		
 		a.add(new Empty());
 		return a;
 	}
@@ -99,6 +103,40 @@ public class CobolParser {
 		Sequence s = new Sequence();
 		s.add(new Word().setAssembler(new SectionNameAssembler()));
 		s.add(new CaselessLiteral("section") );
+		s.add(new Symbol('.').discard());	
+
+		return s;
+	}
+	
+	/*
+	 * Return a parser that will recognize the grammar:
+	 * 
+	 *    ***--- comment text 
+	 *
+	 */
+	protected Parser CommentLine() {
+		Sequence s = new Sequence();
+		s.add(new Symbol("*"));
+		s.add(new Symbol("*"));
+		s.add(new Symbol("*"));
+		s.add(new Symbol("-"));
+		s.add(new Symbol("-"));
+		s.add(new Symbol("-"));
+		s.add(new Word().setAssembler(new CommentLineAssembler()) );
+
+		return s;
+	}
+	
+	/*
+	 * Return a parser that will recognize the grammar:
+	 * 
+	 *    Paragraph name = Word
+	 *
+	 */
+	protected Parser ParagraphName() {
+		Sequence s = new Sequence();
+		s.add(new Word().setAssembler(new ParagraphNameAssembler()));
+		s.add(new CaselessLiteral("paragraph") );
 		s.add(new Symbol('.').discard());	
 
 		return s;

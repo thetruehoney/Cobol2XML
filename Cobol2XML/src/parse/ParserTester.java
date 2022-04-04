@@ -26,7 +26,7 @@ import java.util.logging.Logger;
 
 public abstract class ParserTester {
 	// use the classname for the logger, this way you can refactor
-    private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+public final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 	protected Parser p;
 	protected boolean logTestStrings = true;
 /**

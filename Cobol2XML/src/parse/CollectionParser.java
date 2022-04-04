@@ -72,12 +72,16 @@ protected CollectionParser(
 	Parser p1, 
 	Parser p2, 
 	Parser p3, 
-	Parser p4) {
+	Parser p4,
+	Parser p5,
+	Parser p6) {
 	//
 	subparsers.add(p1);
 	subparsers.add(p2);
 	subparsers.add(p3);
 	subparsers.add(p4);
+	subparsers.add(p5);
+	subparsers.add(p6);
 }
 /**
  * Adds a parser to the collection.
