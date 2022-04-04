@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <cobol>
-    <comment>-</comment>
+    <Constant>
+        <Constant Name="base_2"/>
+        <base_2 Line_Number="88"/>
+        <base_2 Value="0.0"/>
+    </Constant>
+    <comment>This</comment>
     <division>identification</division>
     <Program-ID>base_jb</Program-ID>
     <day-date-written>7</day-date-written>

@@ -1,3 +1,4 @@
+ 88  base_2  value  2. 
 ***--- This is a comment
 identification division.
 

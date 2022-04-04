@@ -1,0 +1,1 @@
+INDEX VERSION 1.131+C:\Users\Daniel\git\Cobol2XML\Cobol2XML\.metadata\.plugins\org.eclipse.jdt.core
