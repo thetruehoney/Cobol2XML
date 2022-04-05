@@ -21,6 +21,8 @@
 
 package cobol;
 
+import java.util.ArrayList;
+
 import utensil.*;
 
 public class Cobol implements PubliclyCloneable {
@@ -35,8 +37,28 @@ public class Cobol implements PubliclyCloneable {
 	protected String constantName;
 	protected double constantValue;
 	protected int lineNumber = 0; 
-
+	protected ArrayList<Object> listElement;
+	protected String customName;
+	protected String customContent;
 	
+	public String getCustomContent() {
+		return customContent;
+	}
+	public void setCustomContent(String customContent) {
+		this.customContent = customContent;
+	}
+	public String getCustomName() {
+		return customName;
+	}
+	public void setCustomName(String customName) {
+		this.customName = customName;
+	}
+	public ArrayList<Object> getListElement() {
+		return listElement;
+	}
+	public void setListElement(ArrayList<Object> listElement) {
+		this.listElement = listElement;
+	}
 	public String getConstantName() {
 		return constantName;
 	}
@@ -118,6 +140,10 @@ public class Cobol implements PubliclyCloneable {
 		}
 		
 		if (!ifCobolObjEqual(paragraphName, c.paragraphName)) {
+			return false;
+		}
+		
+		if (!ifCobolObjEqual(listElement, c.listElement)) {
 			return false;
 		}
 				
@@ -292,6 +318,10 @@ public class Cobol implements PubliclyCloneable {
 		buf.append(commentLine);
 		buf.append(", ");
 		buf.append(paragraphName);
+		buf.append(", ");
+		buf.append(listElement);
+		buf.append(", ");
+		buf.append(customName);
 		
 		return buf.toString();
 	}

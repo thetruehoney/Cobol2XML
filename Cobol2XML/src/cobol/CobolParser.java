@@ -61,6 +61,10 @@ public class CobolParser {
 		
 		a.add( ParagraphName() );
 		
+		a.add( ListElement() );
+		
+		a.add( CustomName() );
+		
 		a.add(new Empty());
 		return a;
 	}
@@ -113,7 +117,7 @@ public class CobolParser {
 	/*
 	 * Return a parser that will recognize the grammar:
 	 * 
-	 *    ***--- comment text 
+	 *    <line number> <contstant name> "value" <constant value>.
 	 *
 	 */
 	protected Parser ConstantValue() {
@@ -154,10 +158,45 @@ public class CobolParser {
 	 */
 	protected Parser ParagraphName() {
 		Sequence s = new Sequence();
-		s.add(new Word().setAssembler(new ParagraphNameAssembler()));
+		s.add(new Word().setAssembler(new ParagraphAssembler()));
 		s.add(new CaselessLiteral("paragraph") );
-		s.add(new Symbol('.').discard());	
-
+		s.add(new Symbol('.').discard());
+		
+		return s;
+	}
+	
+	/*
+	 * Return a parser that will recognize the grammar:
+	 * 
+	 *    Paragraph name = Word
+	 *
+	 */
+	protected Parser CustomName() {
+		Sequence s = new Sequence();
+		s.add(new Word());
+		s.add(new Symbol("<").discard());
+		s.add(new Word());
+		s.add(new Symbol(">").discard());
+		s.add(new Symbol('.').discard());
+		s.setAssembler(new CustomAssembler());
+		
+		return s;
+	}
+	
+	
+	
+	/*
+	 * Return a parser that will recognize the grammar:
+	 * 
+	 *    List Element = Word
+	 *
+	 */
+	protected Parser ListElement() {
+		Sequence s = new Sequence();
+		s.add(new CaselessLiteral("list") );
+		s.add(new Symbol('.').discard());
+		s.add(new Word().setAssembler(new ListAssembler()));
+			
 		return s;
 	}
 	

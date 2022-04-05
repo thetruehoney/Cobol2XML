@@ -4,7 +4,7 @@ import parse.Assembler;
 import parse.Assembly;
 import parse.tokens.Token;
 
-public class ParagraphNameAssembler extends Assembler {
+public class ParagraphAssembler extends Assembler {
 
 	/**
 	 * Pop a string, and set the target Paragraph Name to this
@@ -17,7 +17,7 @@ public class ParagraphNameAssembler extends Assembler {
 	public void workOn(Assembly a) {
 		Cobol c = new Cobol();
 		Token t = (Token) a.pop();
-		c.setParagraphName(t.sval() );
+		c.setParagraphName(t.sval().trim() );
 		a.setTarget(c);
 	}
 }

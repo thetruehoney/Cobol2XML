@@ -74,7 +74,9 @@ protected CollectionParser(
 	Parser p3, 
 	Parser p4,
 	Parser p5,
-	Parser p6) {
+	Parser p6,
+	Parser p7,
+	Parser p8) {
 	//
 	subparsers.add(p1);
 	subparsers.add(p2);
@@ -82,6 +84,8 @@ protected CollectionParser(
 	subparsers.add(p4);
 	subparsers.add(p5);
 	subparsers.add(p6);
+	subparsers.add(p7);
+	subparsers.add(p8);
 }
 /**
  * Adds a parser to the collection.

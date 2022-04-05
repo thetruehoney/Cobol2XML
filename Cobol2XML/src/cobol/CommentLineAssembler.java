@@ -16,11 +16,15 @@ public class CommentLineAssembler extends Assembler {
 	@Override
 	public void workOn(Assembly a) {
 		Cobol c = new Cobol();
+		String s = "";
 		Token t = (Token) a.pop();
 		if(t.sval() != null) {  
-			c.setCommentLine(t.sval().trim());
-			a.setTarget(c);
-			}   
-	} 
+			s = s + t.sval().trim();
+		}
+		s = s + " " + a.remainder(" ");
 
-}
+		c.setCommentLine(s);
+		a.setTarget(c);
+	}
+} 
+
