@@ -19,7 +19,8 @@ public class CommentLineAssembler extends Assembler {
 		Token t = (Token) a.pop();
 		if(t.sval() != null) {  
 			c.setCommentLine(t.sval().trim());
-			a.setTarget(c); }   
+			a.setTarget(c);
+			}   
 	} 
 
 }
